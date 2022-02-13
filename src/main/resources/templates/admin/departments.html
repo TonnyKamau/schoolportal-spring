@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+
+    <title>Admin  | Dashboard</title>
+
+    <!-- Bootstrap core CSS -->
+
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="https://cdn.ckeditor.com/4.7.1/standard/ckeditor.js"></script>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-default">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+                <a class="navbar-brand">Admin Panel</a>
+            </div>
+            <div id="navbar" class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                <li class="active"><a th:href="@{'/admin'}">Dashboard</a></li>
+                    <li><a th:href="@{'/admin/usersview'}">Users</a></li>
+                    <li><a th:href="@{'/admin/resultsview'}">Examination</a></li>
+                    <li><a th:href="@{'/admin/unitsview'}">CourseUnits</a></li>
+                    <li><a th:href="@{'/admin/departmentsview'}">Departments </a></li>
+                    <li><a th:href="@{'/admin/roomsview'}">Rooms </a></li>
+                     <li><a th:href="@{'/admin/roomallocationview'}">RoomAllocation </a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="active"><a >Welcome Admin!</a></li>
+                    <li><a href="/logout">Logout</a></li>
+                </ul>
+            </div>
+        </div>
+
+    </nav>
+    <header id="header">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-10">
+                    <h3><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Dashboard <small>Examination Management System</small></h3>
+                </div>
+                
+            </div>
+        </div>
+    </header>
+    <section id="breadcrumb">
+        <div class="container">
+            <ol class="breadcrumb">
+                <li class="active">DashBoard</li>
+            </ol>
+        </div>
+    </section>
+
+    <section id="main">
+        <div class="container">
+            <div class="row">
+              <div class="col-md-3">
+                    <div class="list-group">
+                          <a th:href="@{'/admin'}"class="list-group-item active main-color-bg"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span>Dashboard</a>
+                        <a th:href="@{'/admin/usersview'}"class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>Users<span class="badge" th:text="${countUsers}"></span></a>
+                        <a th:href="@{'/admin/resultsview'}"class="list-group-item"><span class="glyphicon glyphicon-paperclip" aria-hidden="true"></span>Examination<span class="badge">44</span></a>
+                        <a th:href="@{'/admin/unitsview'}"class="list-group-item"><span class="glyphicon glyphicon-modal-window" aria-hidden="true"></span>CourseUnits<span class="badge">99</span></a>
+                        <a th:href="@{'/admin/departmentsview'}"class="list-group-item"><span class="glyphicon glyphicon-education" aria-hidden="true"></span>Departments<span class="badge" th:text="${countDepartments}"></span> </a>
+                        <a th:href="@{'/admin/roomsview'}"class="list-group-item"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Rooms <span class="badge">56</span></a>
+                         <a th:href="@{'/admin/roomallocationview'}"class="list-group-item"><span class="glyphicon glyphicon-check" aria-hidden="true"></span>RoomAllocation <span class="badge">70</span></a>
+                    </div>
+                   
+                </div>
+                
+             <div class="col-md-9">
+                    <!--Lates User-->
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Latest Users</h3>
+                        </div>
+                        <div class="panel-body">
+                           
+                             <h3>Add Department</h3>
+                            <form action="#" class="row g-3" th:action="@{/admin/departments/save}" th:object="${department}" method="post">
+                          <div class="col-md-12">      
+                             <input type="text" class="form-control" placeholder="Add Departments" readonly/>     
+                                 </div>   
+                              
+                                 <div class="col-md-12">
+                           
+                                        <label class="form-label" >Department Id</label>
+                                            <input type="hidden" th:field="*{id}" />
+                                            <input type="text" th:field="*{deptId}" class="form-control" placeholder="Department Id" />
+                                 </div>   
+                                  <div class="col-md-12">
+                           
+                                        <label class="form-label" >Department's Name</label>
+                                            
+                                            <input type="text" th:field="*{deptName}" class="form-control" placeholder="Department name" />
+                                    
+                                    
+                                 </div>   
+                                    
+                                    
+                                       <div class="col-md-12">
+                                         <label class="form-label" >Head of Department</label>
+                                        <input type="text" th:field="*{hodName}" class="form-control" placeholder="Name of Head of Department" />
+                                    </div> 
+
+                                    <br>
+                                    <div class="col-md-12">
+                                    <button type="submit" class="btn btn-info">Save Details</button>
+                                    </div>
+                                
+                            </form>
+                     
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+    </section>
+       
+   
+
+  
+
+    <script>
+        CKEDITOR.replace('editor1');
+    </script>
+
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+</body>
+
+</html>
